@@ -30,15 +30,17 @@ public class Main {
             while (line != null) {
                 if (checkDocNum(line).equals("")) {
                     outBufferedWriter.write(line);
-                    outBufferedWriter.flush();
                     outBufferedWriter.append('\n');
                 } else {
                     outBufferedError.write(line + ":" + checkDocNum(line));
-                    outBufferedError.flush();
                     outBufferedError.append('\n');
                 }
                 line = bufferedReader.readLine();
             }
+            outBufferedWriter.close();
+            outBufferedError.close();
+            bufferedReader.close();
+
         } catch (FileNotFoundException ex1) {
             System.out.println("Файл не найден");
 
